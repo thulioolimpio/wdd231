@@ -18,10 +18,10 @@
     }
   
     /* ==================== NAVEGAÇÃO DESKTOP ==================== */
-    #menu-button {
+   
+   #menu-button {
       display: none;
     }
-  
     #nav-menu {
       display: flex;
       position: static;
