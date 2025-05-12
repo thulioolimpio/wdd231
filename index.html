@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Course home page for WDD 231">
+    <meta name="author" content="Your Name">
+    <title>WDD 231 | Thulio Olímpio</title>
+    <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS Files - ORDEM CORRETA -->
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/small.css">
+  <link rel="stylesheet" href="styles/larger.css" media="(min-width: 32.5em)">
+    <script src="scripts/navigation.js" defer></script>
+    <script src="scripts/date.js" defer></script>
+    <script src="scripts/course.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="images/IMG_4246.JPG" alt="Your Name">
+        <span>Thulio Olímpio</span>
+    </header>
+    <nav>
+        <button id="menu-button">☰</button>
+        <ul id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="chamber.html">Chamber</a></li>
+            <li><a href="final.html">Final</a></li>
+            <li><a href="https://github.com/yourusername">GitHub</a></li>
+            <li><a href="https://linkedin.com/in/yourprofile">LinkedIn</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Home</h1>
+        <section>
+            <h2>About Me</h2>
+            <p>Hello! I'm Thulio Olímpio, a passionate web development student currently pursuing my degree in Software Development.</p>
+        </section>
+        <section>
+            <h2>Courses</h2>
+            <div id="course-cards"></div>
+            <div class="filter-buttons">
+                <button id="all">All Courses</button>
+                <button id="wdd">WDD Courses</button>
+                <button id="cse">CSE Courses</button>
+            </div>
+            <p>Total Credits: <span id="total-credits">0</span></p>
+        </section>
+        <section>
+            <h2>Resources</h2>
+            <ul>
+                <li><a href="#">MDN Web Docs</a></li>
+                <li><a href="#">W3Schools</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="currentyear"></span> | Thulio Olímpio | Brasil</p>
+        <p id="lastModified"></p>
+    </footer>
+</body>
+</html>
