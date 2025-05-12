@@ -5,6 +5,7 @@
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
+      text-align: center;
       padding: 1rem 2rem;
       position: relative;
     }
