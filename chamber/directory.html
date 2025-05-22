@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Diretório de empresas associadas à Câmara de Comércio">
+    <meta name="author" content="Thulio Olímpio">
+    <title>Câmara de Comércio de Pernambuco - Diretório</title>
+    <meta property="og:title" content="Câmara de Comércio - Diretório">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://example.com/images/logo-social.jpg">
+    <meta property="og:url" content="https://example.com/directory.html">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/chamber.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="images/8906835.png" alt="Logo Câmara de Comércio" width="100" height="100">
+        <h1>Câmara de Comércio de Pernambuco</h1>
+        <nav>
+            <button id="menu-button" aria-label="Menu">☰</button>
+            <ul id="navigation">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="directory.html" class="active">Directory</a></li>
+                <li><a href="join.html">Join</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Empresas Associadas</h2>
+        <div class="view-toggle">
+            <button id="grid-view" aria-label="Visualização em grade">Grid</button>
+            <button id="list-view" aria-label="Visualização em lista">Lista</button>
+        </div>
+        <div id="member-container" class="grid-view"></div>
+    </main>
+
+    <footer>
+        <p>© <span id="copyright-year"></span> Câmara de Comércio</p>
+        <p>Thulio Olímpio | WDD 231</p>
+        <p>Última modificação: <span id="last-modified"></span></p>
+    </footer>
+
+    <script src="scripts/script.js" defer></script>
+</body>
+</html>

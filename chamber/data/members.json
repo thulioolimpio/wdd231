@@ -1,0 +1,58 @@
+[
+    {
+        "name": "TechSolutions Ltda",
+        "address": "Av. Paulista, 1000, São Paulo-SP",
+        "phone": "(11) 1234-5678",
+        "website": "https://techsolutions.com.br",
+        "image": "info.jpg",
+        "membership": "gold"
+    },
+    {
+        "name": "Alimentos Saudáveis S.A.",
+        "address": "Rua das Flores, 250, Curitiba-PR",
+        "phone": "(41) 9876-5432",
+        "website": "https://alimentossaude.com.br",
+        "image": "caixa.jpg",
+        "membership": "silver"
+    },
+    {
+        "name": "Construções Moderna",
+        "address": "Av. Brasil, 1500, Rio de Janeiro-RJ",
+        "phone": "(21) 3344-5566",
+        "website": "https://construcoesmoderna.com.br",
+        "image": "construtora.jpg",
+        "membership": "gold"
+    },
+    {
+        "name": "Consultoria Empresarial",
+        "address": "Rua da Praia, 45, Florianópolis-SC",
+        "phone": "(48) 8765-4321",
+        "website": "https://consultoriaempresarial.com",
+        "image": "negocio.jpg",
+        "membership": "bronze"
+    },
+    {
+        "name": "Moda Elegante",
+        "address": "Av. Afonso Pena, 2000, Belo Horizonte-MG",
+        "phone": "(31) 2345-6789",
+        "website": "https://modaelegante.com.br",
+        "image": "roupa.jpg",
+        "membership": "silver"
+    },
+    {
+        "name": "Logística Rápida",
+        "address": "Rodovia BR-116, km 25, Porto Alegre-RS",
+        "phone": "(51) 3456-7890",
+        "website": "https://logisticarapida.com",
+        "image": "logistica.jpg",
+        "membership": "gold"
+    },
+    {
+        "name": "Educação Digital",
+        "address": "Rua das Acácias, 300, Salvador-BA",
+        "phone": "(71) 4567-8901",
+        "website": "https://educacaodigital.com.br",
+        "image": "vr.jpg",
+        "membership": "bronze"
+    }
+]
