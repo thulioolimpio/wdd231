@@ -44,12 +44,7 @@ header {
     flex-direction: column;
 }
 
-header h1 {
-    font-size: 2rem;
-    margin: 1rem 0;
-    text-align: center;
-    font-weight: 700;
-}
+
 
 header img {
     height: 100px;
@@ -104,6 +99,9 @@ main {
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
+}
+main h1{
+    font-size: 1.6rem;
 }
 
 h2 {
