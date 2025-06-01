@@ -521,6 +521,17 @@ footer p:last-child {
   font-size: 0.9rem;
   color: #5f2120;
 }
+#forecast {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  #current-weather {
+    flex-direction: column;
+  }
+}
 
 /* ===== RESPONSIVIDADE ===== */
 @media (max-width: 768px) {
