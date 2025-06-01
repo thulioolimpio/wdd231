@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página inicial da Brazil Chamber of Commerce">
+    <title>Brazil Chamber of Commerce</title>
+    <meta property="og:title" content="Brazil Chamber of Commerce">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://thulioolimpio.github.io/wdd231/chamber/images/hero.jpg">
+    <meta property="og:url" content="https://thulioolimpio.github.io/wdd231/chamber/index.html">
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/chamber.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="images/social.png" alt="Brazil Chamber Logo" width="100">
+        <nav>
+            <button id="menu-button" aria-label="Menu">☰</button>
+            <ul id="navigation">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="discover.html">Discover</a></li>
+                <li><a href="directory.html">Directory</a></li>
+                <li><a href="join.html">Join</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <img src="images/hero.jpg" alt="Cidade de Recife" loading="lazy">
+            <div class="hero-content">
+                <h1>Welcome to Brazil Chamber</h1>
+                <a href="directory.html" class="cta-button">Join Us!</a>
+            </div>
+        </section>
+
+        <!-- Current Events -->
+        <section class="events">
+            <h2>Current Events</h2>
+            <div class="event-card">
+                <img src="images/workshop.jpg" alt="Workshop de Negócios" loading="lazy">
+                <h3>Business Workshop</h3>
+                <p>📅 June 15, 2025 | 🕒 2:00 PM</p>
+                <p>Learn how to scale your business in 2025</p>
+            </div>
+        </section>
+
+        <!-- Weather -->
+        <section class="weather">
+            <h2>Weather in Brazil</h2>
+            <div id="current-weather">
+                <img id="weather-icon" src="" alt="">
+                <p><span id="temperature"></span>°C</p>
+                <p id="weather-desc"></p>
+            </div>
+            <div id="forecast"></div>
+        </section>
+
+        <!-- Member Spotlights -->
+        <section class="spotlights-section">
+            <h2>Member Spotlights</h2>
+            <div id="spotlight-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="copyright-year"></span> Brazil Chamber of Commerce</p>
+        <p>Thulio Olímpio | WDD 231</p>
+        <p>Last Modified: <span id="last-modified"></span></p>
+    </footer>
+
+    <!-- No final do <body> -->
+<script src="scripts/spotlights.js"></script>
+<script src="scripts/weather.js"></script>
+
+</body>
+</html>
