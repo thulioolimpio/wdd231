@@ -1,0 +1,224 @@
+/* join.css - Styles for the Join page */
+
+.join-main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.join-main h1 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.join-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.join-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    flex: 1;
+}
+
+fieldset {
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    padding: 0 0.5rem;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--gray);
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background-color: var(--secondary);
+    color: var(--dark);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.membership-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.membership-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.membership-card h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.membership-card .price {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.np-card {
+    border-top: 4px solid #6C757D;
+    animation-delay: 0.1s;
+}
+
+.bronze-card {
+    border-top: 4px solid #CD7F32;
+    animation-delay: 0.2s;
+}
+
+.silver-card {
+    border-top: 4px solid #C0C0C0;
+    animation-delay: 0.3s;
+}
+
+.gold-card {
+    border-top: 4px solid #FFD700;
+    animation-delay: 0.4s;
+}
+
+.info-btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.info-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--gray);
+}
+
+.close-modal:hover {
+    color: var(--dark);
+}
+
+.modal h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.modal ul {
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.modal li {
+    margin-bottom: 0.5rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 900px) {
+    .join-container {
+        flex-direction: row;
+    }
+    
+    .membership-cards {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+}

@@ -1,0 +1,71 @@
+/* thankyou.css - Styles for the Thank You page */
+
+.thankyou-main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.thankyou-main h1 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.confirmation {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+}
+
+.confirmation h2 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+#confirmation-details {
+    text-align: left;
+    margin: 2rem auto;
+    max-width: 500px;
+    padding: 1.5rem;
+    background: var(--light);
+    border-radius: 8px;
+}
+
+#confirmation-details p {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray);
+}
+
+#confirmation-details p:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.confirmation p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.return-btn {
+    display: inline-block;
+    background-color: var(--secondary);
+    color: var(--dark);
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.return-btn:hover {
+    background-color: var(--primary);
+    color: white;
+}
