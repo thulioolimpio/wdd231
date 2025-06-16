@@ -1,0 +1,60 @@
+{
+    "locations": [
+        {
+            "id": "amazon-rainforest",
+            "name": "Amazon Rainforest",
+            "image": "images/amazonia.jpg",
+            "address": "Northern Brazil",
+            "description": "The world's largest tropical rainforest, home to incredible biodiversity and indigenous communities."
+        },
+        {
+            "id": "rio-de-janeiro",
+            "name": "Rio de Janeiro",
+            "image": "images/rio.jpg",
+            "address": "Rio de Janeiro State",
+            "description": "Famous for Carnival, Christ the Redeemer statue, Sugarloaf Mountain, and Copacabana Beach."
+        },
+        {
+            "id": "iguazu-falls",
+            "name": "Iguaçu Falls",
+            "image": "images/cataratas.jpg",
+            "address": "Border of Brazil and Argentina",
+            "description": "One of the world's largest waterfall systems with 275 individual drops across nearly 3km."
+        },
+        {
+            "id": "salvador-bahia",
+            "name": "Salvador, Bahia",
+            "image": "images/bahia.jpg",
+            "address": "Northeast Brazil",
+            "description": "Historic center of Afro-Brazilian culture with colonial architecture and vibrant traditions."
+        },
+        {
+            "id": "sao-paulo",
+            "name": "São Paulo",
+            "image": "images/saopaulo.jpg",
+            "address": "São Paulo State",
+            "description": "Brazil's financial capital and most populous city with world-class dining and cultural attractions."
+        },
+        {
+            "id": "pantanal",
+            "name": "Pantanal Wetlands",
+            "image": "images/pantanal.jpg",
+            "address": "Mato Grosso and Mato Grosso do Sul",
+            "description": "The world's largest tropical wetland area, offering exceptional wildlife viewing opportunities."
+        },
+        {
+            "id": "fernando-de-noronha",
+            "name": "Fernando de Noronha",
+            "image": "images/noronha.jpg",
+            "address": "Pernambuco (Archipelago)",
+            "description": "Pristine volcanic archipelago with some of Brazil's most beautiful beaches and marine life."
+        },
+        {
+            "id": "minas-gerais",
+            "name": "Historic Towns of Minas Gerais",
+            "image": "images/minas.jpg",
+            "address": "Minas Gerais State",
+            "description": "Colonial-era towns like Ouro Preto and Tiradentes with baroque architecture and gold rush history."
+        }
+    ]
+}
