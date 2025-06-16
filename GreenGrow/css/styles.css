@@ -1,0 +1,40 @@
+/* Typography */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #FFFFF0;
+  color: #333;
+  margin: 0;
+  padding: 0 1rem;
+  line-height: 1.6;
+}
+
+h1, h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #228B22;
+}
+
+/* Layout */
+header, footer {
+  background-color: #228B22;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+img {
+  display: block;
+  margin-top: 1rem;
+  border: 2px solid #228B22;
+  border-radius: 8px;
+  max-width: 100%;
+}
