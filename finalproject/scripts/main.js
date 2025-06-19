@@ -11,13 +11,12 @@ window.openPlantModal = async function(plantId) {
     try {
         const response = await fetch('./data/plants.json');
         if (!response.ok) throw new Error('Failed to load plant data');
-        
+
         const data = await response.json();
         const plant = data.plants.find(p => p.id == plantId);
 
         if (!plant) throw new Error('Plant not found');
 
-        // Create modal structure
         const modal = document.createElement('div');
         modal.className = 'modal active';
         modal.innerHTML = `
@@ -40,13 +39,11 @@ window.openPlantModal = async function(plantId) {
         document.body.appendChild(modal);
         document.body.style.overflow = 'hidden';
 
-        // Add event listeners
         modal.querySelector('.close-modal').addEventListener('click', closeModal);
         modal.querySelector('.modal-overlay').addEventListener('click', closeModal);
         modal.querySelector('.save-plant')?.addEventListener('click', () => saveToFavorites(plant));
 
     } catch (error) {
-        console.error('Error in openPlantModal:', error);
         alert('Error loading plant details. Please try again.');
     }
 };
@@ -62,7 +59,7 @@ function closeModal() {
 function saveToFavorites(plant) {
     try {
         const favorites = JSON.parse(localStorage.getItem('favoritePlants') || '[]');
-        
+
         if (!favorites.some(fav => fav.id === plant.id)) {
             favorites.push(plant);
             localStorage.setItem('favoritePlants', JSON.stringify(favorites));
@@ -71,10 +68,9 @@ function saveToFavorites(plant) {
             alert(`${plant.name} is already in your favorites!`);
         }
     } catch (error) {
-        console.error('Error saving favorite:', error);
+        // Silenciado para produção
     }
 }
-
 
 // ======================
 // PLANT DATA FUNCTIONS
@@ -84,16 +80,14 @@ async function loadPlants() {
     try {
         const response = await fetch('./data/plants.json');
         if (!response.ok) throw new Error('Network response was not ok');
-        
+
         const data = await response.json();
         displayPlants(data.plants);
-        
-        // Cache data
+
         localStorage.setItem('cachedPlants', JSON.stringify(data.plants));
         localStorage.setItem('lastPlantUpdate', new Date().toISOString());
-        
+
     } catch (error) {
-        console.error('Error loading plants:', error);
         loadCachedPlants();
     }
 }
@@ -110,7 +104,7 @@ function loadCachedPlants() {
 
 function displayPlants(plants) {
     if (!plantContainer) return;
-    
+
     plantContainer.innerHTML = plants.slice(0, 15).map(plant => `
         <div class="plant-card">
             <img src="./images/${plant.image}" alt="${plant.name}" loading="lazy">
@@ -124,7 +118,6 @@ function displayPlants(plants) {
         </div>
     `).join('');
 
-    // Add event listeners to all detail buttons
     document.querySelectorAll('.plant-details').forEach(button => {
         button.addEventListener('click', function() {
             const plantId = this.getAttribute('data-id');
@@ -141,12 +134,11 @@ async function loadBlogPosts() {
     try {
         const response = await fetch('./data/blog.json');
         if (!response.ok) throw new Error('Network response was not ok');
-        
+
         const data = await response.json();
         displayBlogPosts(data.posts);
-        
+
     } catch (error) {
-        console.error('Error loading blog posts:', error);
         if (blogPostsContainer) {
             blogPostsContainer.innerHTML = '<p class="error">Unable to load blog posts.</p>';
         }
@@ -155,7 +147,7 @@ async function loadBlogPosts() {
 
 function displayBlogPosts(posts) {
     if (!blogPostsContainer) return;
-    
+
     blogPostsContainer.innerHTML = posts.map(post => `
         <div class="blog-post">
             <img src="./images/${post.image}" alt="${post.title}" loading="lazy">
@@ -174,10 +166,10 @@ function displayBlogPosts(posts) {
 
 function loadSeasonalTips() {
     if (!seasonalTipsContainer) return;
-    
+
     const currentMonth = new Date().getMonth();
     const season = getCurrentSeason(currentMonth);
-    
+
     seasonalTipsContainer.innerHTML = `
         <div class="tip-card">
             <h4>${season} Gardening Tips</h4>
@@ -190,10 +182,10 @@ function loadSeasonalTips() {
 
 function getCurrentSeason(month) {
     return [
-        [11, 0, 1, 'Winter'],  // Dec, Jan, Feb
-        [2, 3, 4, 'Spring'],   // Mar, Apr, May
-        [5, 6, 7, 'Summer'],   // Jun, Jul, Aug
-        [8, 9, 10, 'Fall']     // Sep, Oct, Nov
+        [11, 0, 1, 'Winter'],
+        [2, 3, 4, 'Spring'],
+        [5, 6, 7, 'Summer'],
+        [8, 9, 10, 'Fall']
     ].find(season => season.includes(month))[3] || 'Seasonal';
 }
 
@@ -230,7 +222,7 @@ function getSeasonalTips(season) {
 function setupMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     if (!hamburger) return;
-    
+
     hamburger.addEventListener('click', () => {
         const nav = document.querySelector('nav ul');
         nav.classList.toggle('active');
@@ -247,7 +239,4 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPlants();
     loadBlogPosts();
     loadSeasonalTips();
-    
-    // Debugging check
-    console.log('openPlantModal is', typeof openPlantModal === 'function' ? 'available' : 'missing');
 });
