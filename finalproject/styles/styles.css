@@ -64,6 +64,10 @@ header {
     z-index: 100;
     
 }
+.site-title{
+    color: #1a6b1a;
+    font-size: 3rem;
+}
 
 .logo {
     display: flex;
