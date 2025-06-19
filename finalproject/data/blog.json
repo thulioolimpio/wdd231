@@ -1,0 +1,25 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "title": "5 Low-Maintenance Indoor Plants for Beginners",
+            "excerpt": "Discover the easiest plants to care for if you're new to gardening.",
+            "image": "woman-taking-care-plants.jpg",
+            "content": "Full article content would go here..."
+        },
+        {
+            "id": 2,
+            "title": "Sustainable Watering Techniques for Your Garden",
+            "excerpt": "Learn how to conserve water while keeping your plants healthy.",
+            "image": "happy-senior-couple-with-water-hose.jpg",
+            "content": "Full article content would go here..."
+        },
+        {
+            "id": 3,
+            "title": "Seasonal Planting Guide for Spring",
+            "excerpt": "What to plant this spring for a beautiful summer garden.",
+            "image": "close-up-planting-flowers-pot.jpg",
+            "content": "Full article content would go here..."
+        }
+    ]
+}

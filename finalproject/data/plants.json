@@ -1,0 +1,124 @@
+{
+    "plants": [
+        {
+            "id": 1,
+            "name": "Snake Plant",
+            "type": "Indoor",
+            "care": "Low",
+            "sunlight": "Indirect",
+            "image": "snake.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Peace Lily",
+            "type": "Indoor",
+            "care": "Medium",
+            "sunlight": "Low to Medium",
+            "image": "peace.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Aloe Vera",
+            "type": "Indoor/Outdoor",
+            "care": "Low",
+            "sunlight": "Bright",
+            "image": "aloe.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Spider Plant",
+            "type": "Indoor",
+            "care": "Low",
+            "sunlight": "Bright Indirect",
+            "image": "spider.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Basil",
+            "type": "Herb",
+            "care": "Medium",
+            "sunlight": "Full Sun",
+            "image": "basil.jpg"
+        },
+        {
+            "id": 6,
+            "name": "Tomato",
+            "type": "Vegetable",
+            "care": "High",
+            "sunlight": "Full Sun",
+            "image": "tomato.jpg"
+        },
+        {
+            "id": 7,
+            "name": "Lavender",
+            "type": "Outdoor",
+            "care": "Medium",
+            "sunlight": "Full Sun",
+            "image": "lavender.jpg"
+        },
+        {
+            "id": 8,
+            "name": "Mint",
+            "type": "Herb",
+            "care": "Low",
+            "sunlight": "Partial Shade",
+            "image": "mint.jpg"
+        },
+        {
+            "id": 9,
+            "name": "ZZ Plant",
+            "type": "Indoor",
+            "care": "Low",
+            "sunlight": "Low to Bright",
+            "image": "zz-plant.jpg"
+        },
+        {
+            "id": 10,
+            "name": "Pothos",
+            "type": "Indoor",
+            "care": "Low",
+            "sunlight": "Low to Bright",
+            "image": "pothos.jpg"
+        },
+        {
+            "id": 11,
+            "name": "Rosemary",
+            "type": "Herb",
+            "care": "Medium",
+            "sunlight": "Full Sun",
+            "image": "rosemary.jpg"
+        },
+        {
+            "id": 12,
+            "name": "Succulent Mix",
+            "type": "Indoor/Outdoor",
+            "care": "Low",
+            "sunlight": "Bright",
+            "image": "succulents.jpg"
+        },
+        {
+            "id": 13,
+            "name": "Fiddle Leaf Fig",
+            "type": "Indoor",
+            "care": "Medium",
+            "sunlight": "Bright Indirect",
+            "image": "fiddle-leaf.jpg"
+        },
+        {
+            "id": 14,
+            "name": "Cactus",
+            "type": "Indoor/Outdoor",
+            "care": "Low",
+            "sunlight": "Full Sun",
+            "image": "cactus.jpg"
+        },
+        {
+            "id": 15,
+            "name": "Orchid",
+            "type": "Indoor",
+            "care": "High",
+            "sunlight": "Bright Indirect",
+            "image": "orchid.jpg"
+        }
+    ]
+}
