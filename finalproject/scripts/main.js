@@ -1,27 +1,64 @@
-// DOM Elements
-const plantContainer = document.getElementById('plantContainer');
-const blogPostsContainer = document.getElementById('blogPosts');
-const seasonalTipsContainer = document.getElementById('seasonalTips');
-
 // ======================
-// PLANT MODAL FUNCTIONALITY
+// MODAL FUNCTIONALITY (Unificada)
 // ======================
 
-window.openPlantModal = async function(plantId) {
+// Cria a estrutura do modal uma única vez
+function setupModals() {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.setAttribute('aria-hidden', 'true');
+    modal.innerHTML = `
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close modal">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    // Fechar modal
+    const closeModal = () => {
+        document.querySelector('.modal').setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto';
+    };
+
+    document.querySelector('.close-modal').addEventListener('click', closeModal);
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal-overlay')) closeModal();
+    });
+    document.addEventListener('keydown', (e) => e.key === 'Escape' && closeModal());
+
+    // Delegação de eventos para toda a página
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('plant-details')) {
+            const plantId = e.target.getAttribute('data-id');
+            openPlantModal(plantId);
+        }
+
+        if (e.target.classList.contains('read-more')) {
+            const postId = e.target.getAttribute('data-id');
+            openBlogModal(postId);
+        }
+    });
+}
+
+// ======================
+// PLANT FUNCTIONS
+// ======================
+
+async function openPlantModal(plantId) {
     try {
+        const modal = document.querySelector('.modal');
+        const modalBody = document.getElementById('modalBody');
         const response = await fetch('./data/plants.json');
-        if (!response.ok) throw new Error();
+
+        if (!response.ok) throw new Error('Failed to load plant data');
 
         const data = await response.json();
         const plant = data.plants.find(p => p.id == plantId);
-        if (!plant) throw new Error();
 
-        const modal = document.createElement('div');
-        modal.className = 'modal active';
-        modal.innerHTML = `
-            <div class="modal-overlay"></div>
-            <div class="modal-content">
-                <button class="close-modal" aria-label="Close modal">&times;</button>
+        if (plant) {
+            modalBody.innerHTML = `
                 <h2>${plant.name}</h2>
                 <img src="./images/${plant.image}" alt="${plant.name}" loading="lazy">
                 <div class="plant-details">
@@ -32,47 +69,28 @@ window.openPlantModal = async function(plantId) {
                     ${plant.tips ? `<div class="care-tips"><h3>Care Tips</h3><p>${plant.tips}</p></div>` : ''}
                 </div>
                 <button class="btn save-plant" data-id="${plant.id}">Save to Favorites</button>
-            </div>
-        `;
-        document.body.appendChild(modal);
-        document.body.style.overflow = 'hidden';
+            `;
 
-        modal.querySelector('.close-modal').addEventListener('click', closeModal);
-        modal.querySelector('.modal-overlay').addEventListener('click', closeModal);
-        modal.querySelector('.save-plant')?.addEventListener('click', () => saveToFavorites(plant));
-    } catch {
-        alert('Error loading plant details. Please try again.');
-    }
-};
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            document.querySelector('.close-modal').focus();
 
-function closeModal() {
-    const modal = document.querySelector('.modal.active');
-    if (modal) {
-        modal.remove();
-        document.body.style.overflow = 'auto';
-    }
-}
-
-function saveToFavorites(plant) {
-    try {
-        const favorites = JSON.parse(localStorage.getItem('favoritePlants') || '[]');
-        if (!favorites.some(fav => fav.id === plant.id)) {
-            favorites.push(plant);
-            localStorage.setItem('favoritePlants', JSON.stringify(favorites));
-            alert(`${plant.name} added to favorites!`);
-        } else {
-            alert(`${plant.name} is already in your favorites!`);
+            // Adiciona evento para o botão de favoritos
+            document.querySelector('.save-plant')?.addEventListener('click', () => {
+                saveToFavorites(plant);
+            });
         }
-    } catch {
-        // Silenciar erro
+    } catch (error) {
+        console.error('Error loading plant:', error);
+        document.getElementById('modalBody').innerHTML = 
+            '<p class="error">Unable to load plant details. Please try again later.</p>';
     }
 }
-
-// ======================
-// PLANT DATA FUNCTIONS
-// ======================
 
 async function loadPlants() {
+    const plantContainer = document.getElementById('plantContainer');
+    if (!plantContainer) return;
+
     try {
         const response = await fetch('./data/plants.json');
         if (!response.ok) throw new Error();
@@ -87,7 +105,9 @@ async function loadPlants() {
 }
 
 function loadCachedPlants() {
+    const plantContainer = document.getElementById('plantContainer');
     const cachedPlants = localStorage.getItem('cachedPlants');
+    
     if (cachedPlants && plantContainer) {
         displayPlants(JSON.parse(cachedPlants));
         plantContainer.innerHTML += `<p class="cache-notice">Showing cached data from ${new Date(localStorage.getItem('lastPlantUpdate')).toLocaleString()}</p>`;
@@ -97,6 +117,7 @@ function loadCachedPlants() {
 }
 
 function displayPlants(plants) {
+    const plantContainer = document.getElementById('plantContainer');
     if (!plantContainer) return;
 
     plantContainer.innerHTML = plants.slice(0, 15).map(plant => `
@@ -111,20 +132,54 @@ function displayPlants(plants) {
             </div>
         </div>
     `).join('');
-
-    document.querySelectorAll('.plant-details').forEach(button => {
-        button.addEventListener('click', function () {
-            const plantId = this.getAttribute('data-id');
-            openPlantModal(plantId);
-        });
-    });
 }
 
 // ======================
 // BLOG FUNCTIONS
 // ======================
 
+async function openBlogModal(postId) {
+    try {
+        const modal = document.querySelector('.modal');
+        const modalBody = document.getElementById('modalBody');
+        const response = await fetch('./data/blog.json');
+
+        if (!response.ok) throw new Error('Failed to load blog data');
+
+        const data = await response.json();
+        const post = data.posts.find(p => p.id == postId);
+
+        if (post) {
+            modalBody.innerHTML = `
+                <h2>${post.title}</h2>
+                <p class="post-date">Posted on ${new Date(post.date || Date.now()).toLocaleDateString()}</p>
+                <img src="./images/${post.image}" alt="${post.title}" loading="lazy">
+                <div class="post-content">
+                    ${post.content || '<p>Content not available.</p>'}
+                </div>
+                <button class="btn close-btn">Close</button>
+            `;
+
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            document.querySelector('.close-btn').focus();
+
+            document.querySelector('.close-btn')?.addEventListener('click', () => {
+                document.querySelector('.modal').setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = 'auto';
+            });
+        }
+    } catch (error) {
+        console.error('Error loading blog post:', error);
+        document.getElementById('modalBody').innerHTML = 
+            '<p class="error">Unable to load blog post. Please try again later.</p>';
+    }
+}
+
 async function loadBlogPosts() {
+    const blogPostsContainer = document.getElementById('blogPosts');
+    if (!blogPostsContainer) return;
+
     try {
         const response = await fetch('./data/blog.json');
         if (!response.ok) throw new Error();
@@ -132,13 +187,12 @@ async function loadBlogPosts() {
         const data = await response.json();
         displayBlogPosts(data.posts);
     } catch {
-        if (blogPostsContainer) {
-            blogPostsContainer.innerHTML = '<p class="error">Unable to load blog posts.</p>';
-        }
+        blogPostsContainer.innerHTML = '<p class="error">Unable to load blog posts.</p>';
     }
 }
 
 function displayBlogPosts(posts) {
+    const blogPostsContainer = document.getElementById('blogPosts');
     if (!blogPostsContainer) return;
 
     blogPostsContainer.innerHTML = posts.map(post => `
@@ -158,6 +212,7 @@ function displayBlogPosts(posts) {
 // ======================
 
 function loadSeasonalTips() {
+    const seasonalTipsContainer = document.getElementById('seasonalTips');
     if (!seasonalTipsContainer) return;
 
     const currentMonth = new Date().getMonth();
@@ -209,6 +264,27 @@ function getSeasonalTips(season) {
 }
 
 // ======================
+// FAVORITES FUNCTION
+// ======================
+
+function saveToFavorites(plant) {
+    try {
+        const favorites = JSON.parse(localStorage.getItem('favoritePlants') || '[]');
+        
+        if (!favorites.some(fav => fav.id === plant.id)) {
+            favorites.push(plant);
+            localStorage.setItem('favoritePlants', JSON.stringify(favorites));
+            alert(`${plant.name} added to favorites!`);
+        } else {
+            alert(`${plant.name} is already in your favorites!`);
+        }
+    } catch (error) {
+        console.error('Error saving favorites:', error);
+    }
+}
+
+
+// ======================
 // MOBILE MENU
 // ======================
 
@@ -224,12 +300,59 @@ function setupMobileMenu() {
 }
 
 // ======================
+// FORM CONFIRMATION
+// ======================
+
+function displayFormConfirmation() {
+    const formDataDisplay = document.getElementById('formDataDisplay');
+    if (!formDataDisplay) return;
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const formData = {};
+    
+    urlParams.forEach((value, key) => {
+        formData[key] = value;
+    });
+    
+    localStorage.setItem('lastFormSubmission', JSON.stringify({
+        data: formData,
+        timestamp: new Date().toISOString()
+    }));
+    
+    let html = '<div class="submission-details"><h3>Your Submission</h3><ul>';
+    
+    urlParams.forEach((value, key) => {
+        if (value.trim() !== '') {
+            html += `<li><strong>${formatKey(key)}:</strong> ${formatValue(value, key)}</li>`;
+        }
+    });
+    
+    html += '</ul></div><p>We will contact you shortly to confirm your appointment.</p>';
+    formDataDisplay.innerHTML = html;
+}
+
+function formatKey(key) {
+    return key.split('-').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
+}
+
+function formatValue(value, key) {
+    if (key === 'date') {
+        return new Date(value).toLocaleDateString();
+    }
+    return value;
+}
+
+// ======================
 // INITIALIZATION
 // ======================
 
 document.addEventListener('DOMContentLoaded', () => {
+    setupModals();
     setupMobileMenu();
     loadPlants();
     loadBlogPosts();
     loadSeasonalTips();
+    displayFormConfirmation();
 });
