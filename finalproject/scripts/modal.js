@@ -23,7 +23,7 @@ function setupModals() {
             const plantId = e.target.getAttribute('data-id');
             openPlantModal(plantId);
         }
-        
+
         if (e.target.classList.contains('read-more')) {
             const postId = e.target.getAttribute('data-id');
             openBlogModal(postId);
@@ -37,9 +37,9 @@ async function openPlantModal(plantId) {
         const modal = document.querySelector('.modal');
         const modalBody = document.getElementById('modalBody');
         const response = await fetch('./data/plants.json');
-        
+
         if (!response.ok) throw new Error('Failed to load plant data');
-        
+
         const data = await response.json();
         const plant = data.plants.find(p => p.id == plantId);
 
@@ -56,24 +56,21 @@ async function openPlantModal(plantId) {
                 </div>
                 <button class="btn save-plant" data-id="${plant.id}">Save to Favorites</button>
             `;
-            
-            // Set focus for accessibility
+
             modal.setAttribute('aria-hidden', 'false');
             document.querySelector('.close-modal').focus();
-            
-            // Add to favorites functionality
+
             document.querySelector('.save-plant')?.addEventListener('click', () => {
                 saveToFavorites(plant);
             });
         } else {
             modalBody.innerHTML = '<p>Plant information not found</p>';
         }
-        
+
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
 
-    } catch (error) {
-        console.error('Error loading plant details:', error);
+    } catch {
         document.getElementById('modalBody').innerHTML = 
             '<p class="error">Unable to load plant details. Please try again later.</p>';
     }
@@ -85,9 +82,9 @@ async function openBlogModal(postId) {
         const modal = document.querySelector('.modal');
         const modalBody = document.getElementById('modalBody');
         const response = await fetch('./data/blog.json');
-        
+
         if (!response.ok) throw new Error('Failed to load blog data');
-        
+
         const data = await response.json();
         const post = data.posts.find(p => p.id == postId);
 
@@ -101,21 +98,19 @@ async function openBlogModal(postId) {
                 </div>
                 <button class="btn close-btn">Close</button>
             `;
-            
-            // Set focus for accessibility
+
             modal.setAttribute('aria-hidden', 'false');
             document.querySelector('.close-btn').focus();
-            
+
             document.querySelector('.close-btn')?.addEventListener('click', closeModal);
         } else {
             modalBody.innerHTML = '<p>Blog post not found</p>';
         }
-        
+
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
 
-    } catch (error) {
-        console.error('Error loading blog post:', error);
+    } catch {
         document.getElementById('modalBody').innerHTML = 
             '<p class="error">Unable to load blog post. Please try again later.</p>';
     }
@@ -127,23 +122,21 @@ function closeModal() {
     modal.style.display = 'none';
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = 'auto';
-    
-    // Return focus to the button that opened the modal
+
     const activeElement = document.activeElement;
     if (activeElement && (activeElement.classList.contains('plant-details') || activeElement.classList.contains('read-more'))) {
         activeElement.focus();
     }
 }
 
-// Save plant to favorites (CORRIGIDO)
+// Save plant to favorites
 function saveToFavorites(plant) {
     let favorites = JSON.parse(localStorage.getItem('favoritePlants') || '[]');
-    favorites = JSON.parse(favorites); // Parse the string if it exists
-    
+
     if (!Array.isArray(favorites)) {
         favorites = [];
     }
-    
+
     if (!favorites.some(fav => fav.id === plant.id)) {
         favorites.push(plant);
         localStorage.setItem('favoritePlants', JSON.stringify(favorites));
@@ -153,5 +146,5 @@ function saveToFavorites(plant) {
     }
 }
 
-// Initialize modals when DOM loads
+// Initialize modals
 document.addEventListener('DOMContentLoaded', setupModals);
